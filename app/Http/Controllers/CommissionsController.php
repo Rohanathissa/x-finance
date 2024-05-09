@@ -13,6 +13,8 @@ class CommissionsController extends Controller
     public function index()
     {
         //
+
+
     }
 
     /**

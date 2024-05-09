@@ -13,7 +13,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('user.index', ['users'=>$users]);
+//            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
+//        dd($users);
+//        return view('user.index', ['users'=>$users]);
         //
     }
 
@@ -40,7 +42,7 @@ class UserController extends Controller
 
         $user = User::create($request->all());
         $user->roles()->attache($request->input('roles'));
-        
+
         return redirect()->route('users.index')->with('success','user crated successfully');
     }
 
@@ -76,7 +78,7 @@ class UserController extends Controller
 
         $user = $user->update($request->all());
         $user->roles()->sync($request->input('roles'));
-        
+
         return redirect()->route('users.index')->with('success','user update successfully');
     }
 
@@ -86,7 +88,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->roles()->detach();
-        $user->delete(); 
+        $user->delete();
         return redirect()->route('users.index')->with('success','user delete successfully');
         //
     }

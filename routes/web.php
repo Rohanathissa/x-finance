@@ -20,6 +20,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/user', function () {
     $users = User::all(); // Fetch all users from the database
+
+    dd($users);
     return view('user.index', ['users' => $users]); // Pass the users variable to the view
 })->middleware(['auth', 'verified'])->name('user');
 
@@ -36,8 +38,11 @@ Route::middleware('auth')->group(function () {
 
 //Route::get('/salary', 'SalaryController@index')->name('salary');
 
-Route::get('salary', [SalaryController::class, 'index'])
-    ->name('salary');
+//Route::get('salary', [SalaryController::class, 'index'])
+//    ->name('salary');
+
+
+Route::resource('salary', SalaryController::class);
 
 // Route::resource('user', UserController::class);
 require __DIR__.'/auth.php';

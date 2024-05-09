@@ -18,9 +18,6 @@
                     <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
                         {{ __('User') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('salary')" :active="request()->routeIs('salary')">
-                        {{ __('Salary') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
                         {{ __('Loan Types') }}
                     </x-nav-link>

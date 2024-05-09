@@ -14,19 +14,31 @@ class SalaryController extends Controller
     public function index()
     {
 
-        $user = User::find(1);
-        $salaries = $user->salaries;
-
-        foreach ($salaries as $salary) {
-            echo $salary->amount; // Assuming 'amount' is a column in your 'salaries' table
-        }
+//        $user = User::find(1);
+//        $salaries = $user->salaries;
 //
-//
-        $users = User::all();
-//        $salaries = Salary::all();
-        return view('salary.index', compact('users', 'salaries'));
+//        foreach ($salaries as $salary) {
+//            echo $salary->amount; // Assuming 'amount' is a column in your 'salaries' table
+//        }
+////
+////
+//        $users = User::all();
+////        $salaries = Salary::all();
+//        return view('salary.index');
 //        return view('user.index', ['users'=>$users, 'salaries'=>$salaries]);
         //
+
+
+
+        $salary = Salary::latest()->paginate(5);
+
+
+//        dd($salary);
+        return view('salary.index', compact('salary'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+
+
     }
 
     /**

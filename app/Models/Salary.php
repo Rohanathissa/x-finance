@@ -9,6 +9,10 @@ class Salary extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'month',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);
